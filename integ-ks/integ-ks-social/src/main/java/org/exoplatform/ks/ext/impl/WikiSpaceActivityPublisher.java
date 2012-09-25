@@ -31,6 +31,8 @@ import org.exoplatform.wiki.service.listener.PageWikiListener;
 import org.exoplatform.wiki.utils.Utils;
 import org.xwiki.rendering.syntax.Syntax;
 
+import static org.exoplatform.social.core.BaseActivityProcessorPlugin.TEMPLATE_PARAM_TO_PROCESS;
+
 public class WikiSpaceActivityPublisher extends PageWikiListener {
 
   public static final String WIKI_APP_ID       = "ks-wiki:spaces";
@@ -77,10 +79,11 @@ public class WikiSpaceActivityPublisher extends PageWikiListener {
     templateParams.put(ACTIVITY_TYPE_KEY, activityType);
     templateParams.put(PAGE_OWNER_KEY, wikiOwner);
     templateParams.put(PAGE_TYPE_KEY, wikiType);
-    templateParams.put(PAGE_TITLE_KEY, page.getTitle());    
+    templateParams.put(PAGE_TITLE_KEY, page.getTitle());
     String pageURL = (page.getURL() == null) ? (spaceUrl != null ? (spaceUrl + "/" + WIKI_PAGE_NAME) : "") : page.getURL();
     templateParams.put(URL_KEY, pageURL);
-    
+    templateParams.put(TEMPLATE_PARAM_TO_PROCESS, "");
+
     String excerpt = StringUtils.EMPTY;
     if (ADD_PAGE_TYPE.equals(activityType)) {
       RenderingService renderingService = (RenderingService) PortalContainer.getInstance()

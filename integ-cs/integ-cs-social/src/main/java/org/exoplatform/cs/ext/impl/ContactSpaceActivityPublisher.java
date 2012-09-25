@@ -32,6 +32,8 @@ import org.exoplatform.social.core.identity.provider.SpaceIdentityProvider;
 import org.exoplatform.social.core.manager.ActivityManager;
 import org.exoplatform.social.core.manager.IdentityManager;
 
+import static org.exoplatform.social.core.BaseActivityProcessorPlugin.TEMPLATE_PARAM_TO_PROCESS;
+
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
@@ -64,6 +66,7 @@ public class ContactSpaceActivityPublisher extends ContactEventListener {
     params.put(JOB_TITLE_KEY, contact.getJobTitle() != null ? contact.getJobTitle() : "");
     params.put(PHONE_KEY, contact.getMobilePhone() != null ? contact.getMobilePhone() : "");
     params.put(ACTIVITY_TYPE, activityType);
+    params.put(TEMPLATE_PARAM_TO_PROCESS, "");
     return params;
   }
 

@@ -34,6 +34,8 @@ import org.exoplatform.social.webui.activity.BaseUIActivityBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import static org.exoplatform.social.core.BaseActivityProcessorPlugin.TEMPLATE_PARAM_TO_PROCESS;
+
 /**
  * Created by The eXo Platform SAS
  * Author : Zun
@@ -107,6 +109,7 @@ public class UIDocActivityBuilder extends BaseUIActivityBuilder {
     activityParams.put(UIDocActivity.REPOSITORY, repository);
     activityParams.put(UIDocActivity.WORKSPACE, workspace);
     activityParams.put(UIDocActivity.MESSAGE, docActivity.message);
+    activityParams.put(TEMPLATE_PARAM_TO_PROCESS, UIDocActivity.MESSAGE + "|" + UIDocActivity.DOCNAME);
     activity.setTemplateParams(activityParams);
     ActivityManager activityManager = (ActivityManager) PortalContainer.getInstance().
                                                         getComponentInstanceOfType(ActivityManager.class);

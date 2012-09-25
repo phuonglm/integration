@@ -37,6 +37,8 @@ import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.space.model.Space;
 import org.exoplatform.social.core.space.spi.SpaceService;
 
+import static org.exoplatform.social.core.BaseActivityProcessorPlugin.TEMPLATE_PARAM_TO_PROCESS;
+
 /**
  * Created by The eXo Platform SAS
  * Author : eXoPlatform
@@ -121,6 +123,7 @@ public class CalendarSpaceActivityPublisher extends CalendarEventListener {
     params.put(EVENT_STARTTIME_KEY, String.valueOf(event.getFromDateTime().getTime()));
     params.put(EVENT_ENDTIME_KEY, String.valueOf(event.getToDateTime().getTime()));
     params.put(EVENT_LINK_KEY, makeEventLink(event));
+    params.put(TEMPLATE_PARAM_TO_PROCESS, "");
     return params;
   }
 

@@ -44,6 +44,8 @@ import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.space.model.Space;
 import org.exoplatform.social.core.space.spi.SpaceService;
 
+import static org.exoplatform.social.core.BaseActivityProcessorPlugin.TEMPLATE_PARAM_TO_PROCESS;
+
 /**
  * @author <a href="mailto:patrice.lamarque@exoplatform.com">Patrice Lamarque</a>
  * @version $Revision$
@@ -109,6 +111,7 @@ public class ForumSpaceActivityPublisher extends ForumEventListener {
     templateParams.put(CATE_ID_KEY, categoryId);
     templateParams.put(TOPIC_ID_KEY, topicId);
     templateParams.put(ACTIVITY_TYPE_KEY, type);
+    templateParams.put(TEMPLATE_PARAM_TO_PROCESS, "");
     activity.setTemplateParams(templateParams);
     return activity;
   }

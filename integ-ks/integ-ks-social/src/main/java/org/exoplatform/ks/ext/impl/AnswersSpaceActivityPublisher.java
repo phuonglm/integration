@@ -44,6 +44,8 @@ import org.exoplatform.social.core.manager.IdentityManager;
 import org.exoplatform.social.core.space.model.Space;
 import org.exoplatform.social.core.space.spi.SpaceService;
 
+import static org.exoplatform.social.core.BaseActivityProcessorPlugin.TEMPLATE_PARAM_TO_PROCESS;
+
 /**
  * @author <a href="mailto:patrice.lamarque@exoplatform.com">Patrice
  *         Lamarque</a>
@@ -122,6 +124,7 @@ public class AnswersSpaceActivityPublisher extends AnswerEventListener {
     templateParams.put(QUESTION_NAME_KEY, questionName);
     templateParams.put(LINK_KEY, link);
     templateParams.put(LANGUAGE_KEY, language);
+    templateParams.put(TEMPLATE_PARAM_TO_PROCESS, "");
     return templateParams;
   }
   
@@ -193,8 +196,6 @@ public class AnswersSpaceActivityPublisher extends AnswerEventListener {
           activityM.saveActivityNoReturn(streamOwner, newActivity(author, "@" + question.getAuthor(), question.getDetail(), templateParams));
         }
       }
-      
-      
     } catch (Exception e) {
       LOG.error("Can not record Activity for space when add new question ", e);
     }
